@@ -17,6 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$',include('newsletter.urls')),
+    url(r'^',include('newsletter.urls')),
+    url(r'^accounts/', include('registration.backends.default.urls')),
 ]
