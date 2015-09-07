@@ -1,3 +1,4 @@
+import settings
 """trydjango18 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,6 +16,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
@@ -22,3 +24,6 @@ urlpatterns = [
     url(r'^',include('newsletter.urls')),
     url(r'^accounts/', include('registration.backends.default.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
